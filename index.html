@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludo y Cálculo de Edad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .container div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        function saludar() {
+            var nombre = document.getElementById("nombre").value;
+            if (nombre) {
+                alert("HOLA, " + nombre);
+            } else {
+                alert("Por favor, ingrese su nombre.");
+            }
+        }
+
+        function calcularEdad() {
+            var fechaNacimiento = document.getElementById("fechaNacimiento").value;
+
+            if (fechaNacimiento) {
+                var hoy = new Date();
+                var cumpleanos = new Date(fechaNacimiento);
+                var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+                var m = hoy.getMonth() - cumpleanos.getMonth();
+
+                if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+                    edad--;
+                }
+
+                alert("Su edad es: " + edad);
+            } else {
+                alert("Por favor, ingrese su fecha de nacimiento.");
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre">
+            <button onclick="saludar()">Saludar</button>
+        </div>
+
+        <div>
+            <label for="fechaNacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fechaNacimiento">
+            <button onclick="calcularEdad()">Calcular Edad</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
